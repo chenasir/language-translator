@@ -1,0 +1,46 @@
+{
+  "name": "multilingual-translator",
+  "version": "1.0.0",
+  "description": "一个基于大模型的多语言翻译工具，支持中文到英文和粤语的翻译及语音朗读",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 server.py",
+    "serve": "python3 -m http.server 8080",
+    "dev": "python3 server.py --port 3000",
+    "build": "echo '静态文件无需构建'",
+    "test": "echo '暂无测试用例'"
+  },
+  "keywords": [
+    "translation",
+    "chinese",
+    "english",
+    "cantonese",
+    "text-to-speech",
+    "openai",
+    "gpt-4o",
+    "multilingual"
+  ],
+  "author": "AI Assistant",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/multilingual-translator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/multilingual-translator/issues"
+  },
+  "homepage": "https://github.com/your-username/multilingual-translator#readme",
+  "engines": {
+    "node": ">=14.0.0",
+    "python": ">=3.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
