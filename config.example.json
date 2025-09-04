@@ -1,0 +1,27 @@
+{
+  "note": "这是一个配置示例文件，请复制为 config.json 并填入真实密钥",
+  "apis": {
+    "deepseek": {
+      "key": "sk-your-deepseek-api-key-here",
+      "note": "从 https://platform.deepseek.com/ 获取"
+    },
+    "tencent": {
+      "secretId": "your-secret-id-here",
+      "secretKey": "your-secret-key-here", 
+      "note": "从腾讯云控制台获取"
+    },
+    "baidu": {
+      "appId": "your-app-id-here",
+      "appKey": "your-app-key-here",
+      "note": "从百度翻译开放平台获取"
+    },
+    "openai": {
+      "key": "sk-your-openai-api-key-here",
+      "note": "从 https://platform.openai.com/ 获取"
+    }
+  },
+  "security": {
+    "warning": "请勿将真实的API密钥提交到Git！",
+    "gitignore": "确保 config.json 已在 .gitignore 中"
+  }
+}

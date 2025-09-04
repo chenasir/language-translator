@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多语言翻译助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <!-- 动态粒子容器 -->
+    <div class="particle-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🌐 多语言翻译助手</h1>
+            <p>输入中文，获取英文和粤语翻译，并支持语音朗读</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="chinese-input"><strong>输入中文：</strong></label>
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="chinese-input" 
+                            placeholder="请输入需要翻译的中文内容..."
+                            rows="4"
+                        ></textarea>
+                        <button id="voice-input-btn" class="voice-input-btn">
+                            <div class="voice-icon">🎤</div>
+                            <div class="voice-status">点击录音</div>
+                            <div class="voice-ripple"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="translate-btn" class="primary-btn">
+                        <span class="btn-text">翻译</span>
+                        <span class="loading" style="display: none;">翻译中...</span>
+                    </button>
+                    <button id="clear-btn" class="secondary-btn">清空</button>
+                    <button id="stt-mode-toggle" class="secondary-btn" title="切换语音识别方式">
+                        识别方式：Web
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="translation-card">
+                    <div class="card-header">
+                        <h3>🇺🇸 英文翻译</h3>
+                        <button id="play-english" class="play-btn" disabled>
+                            🔊 朗读
+                        </button>
+                    </div>
+                    <div id="english-result" class="result-text">
+                        翻译结果将显示在这里...
+                    </div>
+                </div>
+
+                <div class="translation-card">
+                    <div class="card-header">
+                        <h3>🇭🇰 粤语翻译</h3>
+                        <button id="play-cantonese" class="play-btn" disabled>
+                            🔊 朗读
+                        </button>
+                    </div>
+                    <div id="cantonese-result" class="result-text">
+                        翻译结果将显示在这里...
+                    </div>
+                </div>
+            </div>
+
+            <div class="cantonese-recognition-section">
+                <h3 class="section-title">🎙️ 粤语语音识别</h3>
+                <div class="dual-input-container">
+                    <div class="input-group cantonese-input-group">
+                        <label for="cantonese-input"><strong>粤语识别：</strong></label>
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="cantonese-input" 
+                                placeholder="粤语语音识别结果将显示在这里..."
+                                rows="4"
+                            ></textarea>
+                            <button id="cantonese-voice-btn" class="voice-input-btn cantonese-btn" title="点击开始/停止录音">
+                                <div class="voice-icon">🎤</div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="convert-btn-container">
+                        <button id="convert-to-mandarin" class="convert-btn" title="点击转换为普通话">
+                            <span class="convert-text">转换</span>
+                            <span class="loading" style="display: none;">转换中...</span>
+                            <span class="convert-icon">➜</span>
+                        </button>
+                    </div>
+                    
+                    <div class="input-group mandarin-output-group">
+                        <label><strong>普通话转换：</strong></label>
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="mandarin-output" 
+                                placeholder="点击转换按钮将粤语转换为普通话..."
+                                rows="4"
+                                readonly
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="english-recognition-section">
+                <h3 class="section-title">🎙️ 英语语音识别</h3>
+                <div class="dual-input-container">
+                    <div class="input-group english-input-group">
+                        <label for="english-input"><strong>英语识别：</strong></label>
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="english-input" 
+                                placeholder="英语语音识别结果将显示在这里..."
+                                rows="4"
+                            ></textarea>
+                            <button id="english-voice-btn" class="voice-input-btn" title="点击开始/停止录音">
+                                <div class="voice-icon">🎤</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="convert-btn-container">
+                        <button id="convert-to-mandarin-en" class="convert-btn" title="点击转换为普通话">
+                            <span class="convert-text">转换</span>
+                            <span class="loading" style="display: none;">转换中...</span>
+                            <span class="convert-icon">➜</span>
+                        </button>
+                    </div>
+
+                    <div class="input-group mandarin-output-group">
+                        <label><strong>普通话转换：</strong></label>
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="mandarin-output-en" 
+                                placeholder="点击转换按钮将英语转换为普通话..."
+                                rows="4"
+                                readonly
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="voice-config">
+                <details>
+                    <summary>🎙️ 语音设置</summary>
+                    <div class="config-content">
+                        <div class="voice-info">
+                            <h4>🔊 语音优化说明:</h4>
+                            <ul>
+                                <li><strong>粤语朗读:</strong> 优先使用香港语音引擎，音调已调高模拟粤语特点</li>
+                                <li><strong>英文朗读:</strong> 优先使用美式英语女声，发音清晰自然</li>
+                                <li><strong>智能选择:</strong> 系统会自动选择最适合的语音引擎</li>
+                                <li><strong>语音调试:</strong> 打开浏览器控制台可查看语音选择详情</li>
+                            </ul>
+                            
+                            <div class="voice-tips">
+                                <h4>💡 获得最佳粤语效果的建议:</h4>
+                                <ul>
+                                    <li> <strong>Windows用户:</strong> 安装"中文(香港特别行政区)"语言包</li>
+                                    <li> <strong>Mac用户:</strong> 启用"粤语"语音引擎</li>
+                                      <li> <strong>Chrome用户:</strong> 启用"使用语音API增强功能"</li>
+                                    <li> <strong>高级用户:</strong> 安装额外的TTS语音包可获得更多选择</li>
+                             </ul>
+                            </div>
+                            
+                            <button id="voice-test-btn" class="voice-test-btn">🎵 测试语音引擎</button>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="api-config">
+                <details>
+                    <summary>⚙️ API 配置</summary>
+                    <div class="config-content">
+                        <label for="api-type">选择翻译服务商:</label>
+                        <select id="api-type">
+                            <option value="deepseek">DeepSeek (推荐 - 最佳粤语翻译)</option>
+                            <option value="tencent">腾讯翻译 (免费额度最大)</option>
+                            <option value="baidu">百度翻译 (极快且稳定)</option>
+                            <option value="openai">OpenAI (AI翻译)</option>
+                        </select>
+                        
+                        <label for="api-key">API Key:</label>
+                        <input 
+                            type="password" 
+                            id="api-key" 
+                            placeholder="DeepSeek：无需填写；其它服务需按提示配置"
+                        >
+                        <small>DeepSeek 已由后端函数集成，前端不再收集密钥；其它服务按需填写，密钥仅本地存储，不上传。</small>
+                        
+                        <div class="api-info">
+                            <h4>💰 价格对比:</h4>
+                            <ul>
+                                <li><strong>DeepSeek:</strong> ¥1.33/1M tokens + 每日免费额度 (最佳粤语翻译)</li>
+                                <li><strong>腾讯翻译:</strong> ¥58/1M字符 + 每月500万字符免费 (需要后端代理)</li>
+                                <li><strong>百度翻译:</strong> ¥49/1M字符 + 每月5万字符免费 (前端直接可用)</li>
+                                <li><strong>OpenAI GPT-4o Mini:</strong> $0.15/1M 输入tokens, $0.6/1M 输出tokens</li>
+                            </ul>
+                            <p><strong>DeepSeek提供最佳的粤语翻译质量！</strong></p>
+                            
+                            <div class="api-setup-info" style="background: #d1ecf1; border-left-color: #17a2b8;">
+                                <h4>🔧 DeepSeek 使用说明 (后端已集成):</h4>
+                                <p>无需在前端输入 API Key，已通过云端函数调用。</p>
+                                <small>如需自建，请在 Vercel 环境变量配置 DEEPSEEK_API_KEY。</small>
+                            </div>
+                            
+                            <div class="api-setup-info" style="background: #d4edda; border-left-color: #28a745;">
+                                <h4>🔧 腾讯翻译API配置:</h4>
+                                <p>需要填入：SecretId|SecretKey（用|分隔）</p>
+                                <small>✅ 已集成后端代理，可直接使用！每月500万字符免费！</small>
+                            </div>
+                            
+                            <div class="api-setup-info" style="background: #fff3cd; border-left-color: #ffc107;">
+                                <h4>🔧 百度翻译API配置:</h4>
+                                <p>需要填入：APP ID|APP KEY（用|分隔）</p>
+                                <small>获取方式：<a href="https://fanyi-api.baidu.com/" target="_blank">百度翻译开放平台</a> → 注册 → 实名认证 → 创建应用</small>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </main>
+
+        <footer>
+            <p>支持腾讯翻译、百度翻译、DeepSeek 和 OpenAI 多引擎翻译，语音合成由浏览器提供</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
